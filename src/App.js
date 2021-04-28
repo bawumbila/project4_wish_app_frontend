@@ -61,13 +61,14 @@ function App() {
         Wish App
       </header>
       <Form handleAdd={handleAdd}/>
+      <h1 className='header'>My Wishes</h1>
       <div className="container">
         {wishesState.wishes.map((x, index) => (
           <article key={index}>
-            <div className="lineItem">
+            <div className="lineItem titleCard">
               {x.title}
             </div>
-            <div className="lineItem">
+            <div className="lineItem descriptionCard">
               {x.description}
             </div>
           </article>
