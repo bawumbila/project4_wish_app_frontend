@@ -6,13 +6,19 @@ function App() {
 
   const [wishesState, setWishesState] = useState({wishes: []})
 
-  useEffect(() => {
+  // useEffect(() => {
     async function getWishes () {
       const wishes = await fetch('http://localhost:3000/wishes')
       .then(res => res.json())
+      console.log(wishes)
       setWishesState({wishes})
     }
-  })
+    
+
+    //Loads wishes when page loads
+  useEffect(() => {
+    getWishes()
+  }, []);
 
   async function handleAdd(formInputs) {
     const wish = await fetch('http://localhost:3000/wishes', {
@@ -22,8 +28,9 @@ function App() {
       },
       body: JSON.stringify(formInputs)
     }).then(res => res.json())
-
-    // setWishesState(prevState => ({wishes: [wish, ...prevState]}))
+    // load wishes after you add them
+    getWishes()
+    
   }
 
 
@@ -33,7 +40,20 @@ function App() {
         Wish App
       </header>
       <Form handleAdd={handleAdd}/>
+      <div className="container">
+        {wishesState.wishes.map((x, index) => (
+          <article key={index}>
+            <div className="lineItem">
+              {x.title}
+            </div>
+            <div className="lineItem">
+              {x.description}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
+    
   );
 }
 
