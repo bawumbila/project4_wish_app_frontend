@@ -1,24 +1,78 @@
-import logo from './logo.svg';
+import {useState, useEffect} from 'react'
 import './App.css';
+import Form from './components/Form'
 
 function App() {
+
+  const [wishesState, setWishesState] = useState({wishes: []})
+
+  // useEffect(() => {
+    async function getWishes () {
+      const wishes = await fetch('http://localhost:3000/wishes')
+      .then(res => res.json())
+      console.log(wishes)
+      setWishesState({wishes})
+    }
+    
+
+    //Loads wishes when page loads
+  useEffect(() => {
+    getWishes()
+  }, []);
+
+  async function handleAdd(formInputs) {
+    const wish = await fetch('http://localhost:3000/wishes', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'Application/json'
+      },
+      body: JSON.stringify(formInputs)
+    }).then(res => res.json())
+    // load wishes after you add them
+    getWishes()
+    
+  }
+
+  async function handleUpdate(formInputs) {
+    try {
+      await fetch(`http://localhost:3000/notices/${formInputs.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'Application/json'
+        },
+        body: JSON.stringify(formInputs)
+      })
+    } catch (error) {
+      console.log(error);
+    }  //updates once wish is entered
+
+    const wishIdx = wishesState.wishes.findIndex(wish => wish.id === formInputs.id);
+    const updatedWishesArray = wishesState.wishes;
+    updatedWishesArray.splice(wishIdx, 1, formInputs);
+    setWishesState({ wishes: updatedWishesArray });
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Wish App
       </header>
+      <Form handleAdd={handleAdd}/>
+      <div className="container">
+        {wishesState.wishes.map((x, index) => (
+          <article key={index}>
+            <div className="lineItem">
+              {x.title}
+            </div>
+            <div className="lineItem">
+              {x.description}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
+    
   );
 }
 
