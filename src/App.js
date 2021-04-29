@@ -8,7 +8,7 @@ function App() {
 
   // useEffect(() => {
     async function getWishes () {
-      const wishes = await fetch('http://localhost:3000/wishes')
+      const wishes = await fetch('https://project4-wish.herokuapp.com/wishes')
       .then(res => res.json())
       console.log(wishes)
       setWishesState({wishes})
@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   async function handleAdd(formInputs) {
-    const wish = await fetch('http://localhost:3000/wishes', {
+    const wish = await fetch('https://project4-wish.herokuapp.com/wishes', {
       method: 'POST',
       headers: {
         'Content-type': 'Application/json'
@@ -29,8 +29,21 @@ function App() {
       body: JSON.stringify(formInputs)
     }).then(res => res.json())
     // load wishes after you add them
-    getWishes()
+    // getWishes()
+    setWishesState(prevState => ({ wishes: [wish, ...prevState.wishes] }))
     
+  }
+  
+  async function handleDelete(wishId) {
+    try {
+      await fetch(`https://project4-wish.herokuapp.com/wishes/${wishId}`, {
+        method: 'DELETE'
+      })
+      const updatedWishes = wishesState.wishes.filter(wish => wish.id !== wishId)
+      setWishesState({ wishes: updatedWishes });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
@@ -49,6 +62,7 @@ function App() {
             <div className="lineItem">
               {x.description}
             </div>
+            <button onClick={() => handleDelete(x.id)}>X</button>
           </article>
         ))}
       </div>
