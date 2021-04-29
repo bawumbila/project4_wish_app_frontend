@@ -58,4 +58,6 @@
   font-family: 'Nanum Pen Script', cursive;
   font-size: xx-large;
   background-image: url('https://m.media-amazon.com/images/I/61XMr2MDNtL._AC_SX679_.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
