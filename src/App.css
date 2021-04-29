@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
-.App {
-  text-align: center;
+body {
   background-image: url('https://images.unsplash.com/photo-1489549132488-d00b7eee80f1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvb3RpbmclMjBzdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.App {
+  text-align: center;
 }
 
 .App-header {
