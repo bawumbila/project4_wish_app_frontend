@@ -55,7 +55,7 @@ function Form(props) {
           value={formState.description}
           id="description"
        />
-       <input type="submit" value="Add a Wish"/>
+       <input type="submit" value="Add a Wish" className='submitButton'/>
       </form>
     );
   }

@@ -54,6 +54,7 @@ body {
 }
 
 .descriptionCard {
+  display: flex;
   border: dotted;
   border-color: lightskyblue;
   padding: 30px;
@@ -63,4 +64,17 @@ body {
   background-image: url('https://m.media-amazon.com/images/I/61XMr2MDNtL._AC_SX679_.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.deleteButton {
+  margin-left: 500px;
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  background-color: rgb(230, 54, 54);
+  color: white;
+}
+
+.deleteButton:hover, .submitButton:hover {
+  cursor: pointer;
 }

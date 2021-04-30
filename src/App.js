@@ -88,8 +88,8 @@ function App() {
             </div>
             <div className="lineItem descriptionCard">
               {x.description}
+              <button onClick={() => handleDelete(x.id)} className='deleteButton'>X</button>
             </div>
-            <button onClick={() => handleDelete(x.id)}>X</button>
           </article>
         ))}
       </div>
