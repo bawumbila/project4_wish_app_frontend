@@ -26,10 +26,10 @@ function App() {
       headers: {
         'Content-type': 'Application/json'
       },
-      body: JSON.stringify(formInputs)
+      body: JSON.stringify(formInputs),
     }).then(res => res.json())
     // load wishes after you add them
-    getWishes()
+    setWishesState(prevState => ({wishes: [wish, ...prevState.wishes]}))
     
   }
 
@@ -40,7 +40,7 @@ function App() {
         headers: {
           'Content-type': 'Application/json'
         },
-        body: JSON.stringify(formInputs)
+        body: JSON.stringify(formInputs),
       })
     } catch (error) {
       console.log(error);
