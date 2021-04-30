@@ -36,6 +36,7 @@ body {
   margin-right: 25%;
   border: solid;
   border-color: rgb(247, 160, 173);
+  background-color: rgb(244, 243, 244);
 }
 
 .lineItem {
@@ -54,6 +55,8 @@ body {
 }
 
 .descriptionCard {
+  display: flex;
+  justify-content: center;
   border: dotted;
   border-color: lightskyblue;
   padding: 30px;
@@ -63,4 +66,25 @@ body {
   background-image: url('https://m.media-amazon.com/images/I/61XMr2MDNtL._AC_SX679_.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.editButton {
+  position: absolute;
+  margin-left: 490px;
+  margin-top: 25px;
+  width: 60px;
+}
+
+.deleteButton{
+  position: absolute;
+  margin-left: 490px;
+  margin-top: 0px;
+  background-color: rgb(212, 57, 57);
+  color: white;
+  width: 40px;
+}
+
+.editButton:hover, .deleteButton:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 6px #808080;
 }

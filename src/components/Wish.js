@@ -22,10 +22,11 @@ function Wish({ wish, handleDelete, handleUpdate }) {
           />
           :
           <div className="wish">
-            <h3>{wish.title}</h3>
-            <p>{wish.description}</p>
-            <button onClick={() => handleDelete(wish.id)}>X</button>
-            <button onClick={toggleForm}>Edit</button>
+            <h3 className='titleCard'>{wish.title}</h3>
+            <div className='descriptionCard'>{wish.description}
+            <button onClick={() => handleDelete(wish.id)} className='deleteButton'>X</button>
+            <button onClick={toggleForm} className='editButton'>Edit</button>
+            </div>
           </div>
       }
     </>

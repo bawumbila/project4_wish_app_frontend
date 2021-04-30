@@ -65,10 +65,12 @@ function App() {
 
 return (
   <div className="App">
+    <header className='App-header'>Wish App</header>
+    <h1 className='header'>My Wishes</h1>
     <div className="container">
       
       <Aside handleAdd={handleAdd} />
-      <Main 
+      <Main
         wishes={wishesState.wishes}
         handleDelete={handleDelete}
         handleUpdate={handleUpdate} 
