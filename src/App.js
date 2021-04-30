@@ -8,7 +8,7 @@ function App() {
 
   // useEffect(() => {
     async function getWishes () {
-      const wishes = await fetch('http://localhost:3000/wishes')
+      const wishes = await fetch('http://project4-wish.herokuapp.com/wishes')
       .then(res => res.json())
       console.log(wishes)
       setWishesState({wishes})
@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   async function handleAdd(formInputs) {
-    const wish = await fetch('http://localhost:3000/wishes', {
+    const wish = await fetch('http://project4-wish.herokuapp.com/wishes', {
       method: 'POST',
       headers: {
         'Content-type': 'Application/json'
@@ -33,6 +33,27 @@ function App() {
     
   }
 
+  async function handleUpdate(formInputs) {
+    try {
+      await fetch(`http://project4-wish.herokuapp.com/wishes'/${formInputs.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'Application/json'
+        },
+        body: JSON.stringify(formInputs)
+      })
+    } catch (error) {
+      console.log(error);
+    }  //updates once wish is entered
+
+    const wishIdx = wishesState.wishes.findIndex(wish => wish.id === formInputs.id);
+    const updatedWishesArray = wishesState.wishes;
+    updatedWishesArray.splice(wishIdx, 1, formInputs);
+    setWishesState({ wishes: updatedWishesArray });
+  }
+
+  
+
 
   return (
     <div className="App">
@@ -40,13 +61,14 @@ function App() {
         Wish App
       </header>
       <Form handleAdd={handleAdd}/>
+      <h1 className='header'>My Wishes</h1>
       <div className="container">
         {wishesState.wishes.map((x, index) => (
           <article key={index}>
-            <div className="lineItem">
+            <div className="lineItem titleCard">
               {x.title}
             </div>
-            <div className="lineItem">
+            <div className="lineItem descriptionCard">
               {x.description}
             </div>
           </article>
