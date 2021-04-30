@@ -20,18 +20,24 @@ function App() {
     getWishes()
   }, []);
 
-  async function handleAdd(formInputs) {
-    const wish = await fetch('http://project4-wish.herokuapp.com/wishes', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'Application/json'
-      },
-      body: JSON.stringify(formInputs)
-    }).then(res => res.json())
-    // load wishes after you add them
-    getWishes()
+  // async function handleAdd(formInputs) {
+  //   const wish = await fetch('http://project4-wish.herokuapp.com/wishes', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'Application/json'
+  //     },
+  //     body: JSON.stringify(formInputs)
+  //   }).then(res => res.json())
+  //   // load wishes after you add them
+  //   getWishes()
+  //   //reset input fields
+  //   var inputOne = document.getElementById("title");
+  //   var inputTwo = document.getElementById("description");
+  //   console.log(inputOne)
+  //   inputOne.value = '';
+  //   inputTwo.value = '';
     
-  }
+  // }
 
   async function handleUpdate(formInputs) {
     try {
@@ -53,6 +59,18 @@ function App() {
   }
 
   
+  async function handleDelete(wishId) {
+    try {
+      await fetch(`https://project4-wish.herokuapp.com/wishes/${wishId}`, {
+        method: 'DELETE'
+      })
+      const updatedWishes = wishesState.wishes.filter(wish => wish.id !== wishId)
+      setWishesState({ wishes: updatedWishes });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
 
   return (
@@ -60,7 +78,7 @@ function App() {
       <header className="App-header">
         Wish App
       </header>
-      <Form handleAdd={handleAdd}/>
+      <Form getWishes={getWishes} />
       <h1 className='header'>My Wishes</h1>
       <div className="container">
         {wishesState.wishes.map((x, index) => (
@@ -71,6 +89,7 @@ function App() {
             <div className="lineItem descriptionCard">
               {x.description}
             </div>
+            <button onClick={() => handleDelete(x.id)}>X</button>
           </article>
         ))}
       </div>

@@ -16,8 +16,27 @@ function Form(props) {
 
   function handleSubmit(event){
     event.preventDefault();
-    props.handleAdd(formState);
+    // props.handleAdd(formState);
+    handleAdd(formState);
   }
+  // Moved handle add function from app.js
+  async function handleAdd(formInputs) {
+    const wish = await fetch('http://project4-wish.herokuapp.com/wishes', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'Application/json'
+      },
+      body: JSON.stringify(formInputs)
+    }).then(res => res.json())
+    // load wishes after you add them
+    props.getWishes()
+    // Sets state to empty to clear rthe field
+    setFormState(prevState => ({
+      title:'',
+      description:''
+    }));
+  }
+
     return (
       <form onSubmit={handleSubmit}>
         <Input
