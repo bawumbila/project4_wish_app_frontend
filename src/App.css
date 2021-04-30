@@ -1,15 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1489549132488-d00b7eee80f1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvb3RpbmclMjBzdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 5vh;
   color: white;
 }
 
+.header {
+  color: rgb(247, 160, 173);
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 5vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: solid;
+  border-color: rgb(247, 160, 173);
+  background-color: rgb(244, 243, 244);
+}
+
+.lineItem {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.titleCard {
+  font-size: xx-large;
+  font-family: 'Nanum Pen Script', cursive;
+  color: rgb(74, 74, 190);
+  font-weight: 800;
+  text-decoration: underline;
+  background: rgb(244, 243, 244)
+}
+
+.descriptionCard {
+  display: flex;
+  justify-content: center;
+  border: dotted;
+  border-color: lightskyblue;
+  padding: 30px;
+  color: rgb(74, 74, 190);
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: xx-large;
+  background-image: url('https://m.media-amazon.com/images/I/61XMr2MDNtL._AC_SX679_.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.editButton {
+  position: absolute;
+  margin-left: 490px;
+  margin-top: 25px;
+  width: 60px;
+}
+
+.deleteButton{
+  position: absolute;
+  margin-left: 490px;
+  margin-top: 0px;
+  background-color: rgb(212, 57, 57);
+  color: white;
+  width: 40px;
+}
+
+.editButton:hover, .deleteButton:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 6px #808080;
+}
