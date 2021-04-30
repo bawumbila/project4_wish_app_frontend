@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import './App.css';
 import Form from './components/Form'
+import Wish from './components/Wish'
 
 function App() {
 
@@ -70,7 +71,6 @@ function App() {
       console.log(error);
     }
   }
-
 
 
   return (

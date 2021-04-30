@@ -72,9 +72,16 @@ body {
   width: 50px;
   height: 25px;
   background-color: rgb(230, 54, 54);
+  
   color: white;
 }
 
 .deleteButton:hover, .submitButton:hover {
   cursor: pointer;
 }
+
+.deleteButton:hover {
+  box-shadow: 0 0 6px #808080;
+}
+
+
