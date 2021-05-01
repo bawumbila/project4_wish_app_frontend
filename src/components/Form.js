@@ -35,6 +35,10 @@ function Form(props) {
       props.toggleForm();
     } else {
     props.handleAdd(formState);
+    setFormState({
+      title:'',
+      description:''
+    })
     }
   }
 
