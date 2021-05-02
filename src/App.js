@@ -37,17 +37,7 @@ function App() {
     }
   }
   
-  // async function handleDelete(wishId) {
-  //   try {
-  //     await fetch(`https://project4-wish.herokuapp.com/wishes/${wishId}`, {
-  //       method: 'DELETE'
-  //     })
-  //     const updatedWishes = wishesState.wishes.filter(wish => wish.id !== wishId)
-  //     setWishesState({ wishes: updatedWishes });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+
 
   async function handleUpdate(formInputs) {
     try {
